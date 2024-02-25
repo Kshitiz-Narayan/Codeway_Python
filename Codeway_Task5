@@ -1,0 +1,44 @@
+import random
+questions = {
+    "What is the name of the toy cowboy in Toy Story?":["A.Woody","B.Mindy","C.Buzz","D.Chloe"],
+    "Whose nose grew longer every time he lied?":["A.Rapunzel","B.Flynn","C.Pinocchio","D.Ariel"],
+    "What type of fish is Nemo?":["A.Sword Fish","B.Clown Fish","C.Puffer Fish","D.Fighter Fish"],
+    "Where is the Great Pyramid of Giza?":["A.Paris","B.London","C.India","D.Egypt"]
+}
+correct_answers = {
+    "What is the name of the toy cowboy in Toy Story?":"A",
+    "Whose nose grew longer every time he lied?":"C",
+    "What type of fish is Nemo?":"B",
+    "Where is the Great Pyramid of Giza?":"D"
+}
+def present_quiz(questions, correct_answers):
+    score = 0
+    for question, choices in questions.items():
+        print(question)
+        for choice in choices:
+            print(choice)
+        user_answer = input("Your answer (Enter A, B, C, or D): ").strip().upper()
+        if user_answer == correct_answers[question]:
+            print("Correct!")
+            score += 1
+        else:
+            print("Incorrect. The correct answer is:", correct_answers[question])
+        print()
+    return score
+def display_results(score, total_questions):
+    print("Quiz completed!")
+    print("You scored {}/{}.".format(score, total_questions))
+    percentage = (score / total_questions) * 100
+    print("Your percentage score: {:.2f}%".format(percentage))
+def quiz_game():
+    print("Welcome to the Multiple Choice Quiz!")
+    print("Answer the following questions.")
+    print("Rules:-")
+    print("1. You can not go back to the previous questions.")
+    print("2. You can not choose multiple answers.")
+    print("-------------------------------")
+    total_questions = len(questions)
+    score = present_quiz(questions, correct_answers)
+    display_results(score, total_questions)
+if __name__ == "__main__":
+    quiz_game()
